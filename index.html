@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+      <script src="jquery-3.6.0.min.js"></script>
+      <title>Frontend Mentor | Interactive rating component</title>
+      <link href="style.css" rel="stylesheet">
+      <link href="bootstrap.min.css" rel="stylesheet">
+    </head>
+
+
+    <body>
+
+      <main id="main">
+
+          <!-- first state -->
+          <div class="card-box" id="card-box-normal">
+
+            <img class="star-box" src="icon-star.svg" alt="icon-star">
+
+            <div class="text">
+              <h2>How did we do?</h2>
+              <p>
+                Please let us know how we did with your support request. All feedback is appreciated
+                to help us improve our offering!
+              </p>
+            </div>
+
+            <form id="rating_form">
+
+              <fieldset class="rating">
+                <div class="rate" id="rate_1">
+                  <input type="radio" name="rating" id="rating_1" value="1">
+                  <label for="rating_1">1</label>
+                </div>
+                <div class="rate" id="rate_2">
+                  <input type="radio" name="rating" id="rating_2" value="2">
+                  <label for="rating_2">2</label>
+                </div>
+                <div class="rate" id="rate_3">
+                  <input type="radio" name="rating" id="rating_3" value="3">
+                  <label for="rating_3">3</label>
+                </div>
+                <div class="rate" id="rate_4">
+                  <input type="radio" name="rating" id="rating_4" value="4">
+                  <label for="rating_4">4</label>
+                </div>
+                <div class="rate" id="rate_5">
+                  <input type="radio" name="rating" id="rating_5" value="5">
+                  <label for="rating_5">5</label>
+                </div>
+              </fieldset>
+  
+  
+              <button class="submit-btn" type="submit" role="button">
+                Submit
+              </button>
+
+            </form>
+            
+
+          </div>
+
+
+          <!-- submitted state -->
+          <div class="card-box" id="card-box-submitted">
+
+            <div class="text text-center mb-0">
+
+              <img src="illustration-thank-you.svg" alt="illustration-thank-you" class="mb-4">
+
+              <div class="selected-values mb-4">
+                <div></div>
+              </div>
+
+              <h2>Thank you!</h2>
+              <p>
+                We appreciate you taking the time to give a rating. If you ever need more support,
+                don't hesitate to get in touch!
+              </p>
+            </div>
+        
+          </div>
+
+      </main>
+
+
+
+
+
+
+
+
+
+      <script>
+
+        $('.rate').hover(
+          // onmouseenter
+          function() {
+            $(this).css('background-color', 'hsl(25, 97%, 53%)');
+            $(this).css('color', 'hsl(0, 0%, 100%)');
+          },
+          // onmouseleave
+          function() {
+            $(this).css('background-color', 'hsl(212, 20%, 19%)');
+            $(this).css('color', '#959eac');
+          }
+        );
+        
+
+        $('.rate input').change(function() {
+
+          for (let i = 1; i < 6; i++) {
+            if ( $(`#rating_${i}`).is(':checked') ) {
+              $(`#rate_${i}`).addClass('rate-active');
+            }
+            else {
+              $(`#rate_${i}`).removeClass('rate-active');
+            }
+          }
+
+        });
+
+
+
+        $('#rating_form').submit(function(e) {
+          e.preventDefault();
+          $('.selected-values > div').html('You selected ' + $('.rate-active > input').val() + ' out of 5');
+
+          $('#card-box-normal').delay(0).fadeOut();
+          $('#card-box-submitted').delay(400).fadeIn();
+        });
+
+
+      </script>
+
+
+      <script src="bootstrap.min.js"></script>
+
+    </body>
+
+</html>
