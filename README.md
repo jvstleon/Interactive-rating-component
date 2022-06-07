@@ -11,8 +11,8 @@ This is a solution to the [Interactive Rating Component on Frontend Mentor](http
 
 ## Links
 
-- Solution URL: #
-- Live Site URL: #
+- Solution URL: https://github.com/jvstleon/Interactive-rating-component
+- Live Site URL: https://jvstleon.github.io/Interactive-rating-component/
 
 
 ## Author
